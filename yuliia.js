@@ -16,6 +16,42 @@ async function showResults()
 } 
 
 
+function  extractUsefulContent(data)
+{
+    []
+    //create an array of 20 objects 
+    //loop over your data to extract
+    //use while loop to continue until your done
+    //null check for the image
+    /*
+    {
+        id: ,
+        name: ,
+        image
+    }
+
+    */
+
+}
+const gridContianer = document.querySelector('.grid-container');
+
+
+displayCars();
+function displayCars()
+{
+    const cars = document.createElement("div");
+    cars.classList.add("cars");
+
+    cars.innerHTML = `
+    <figure> <img src="${image}">
+    <figcaption>${name}</figcaption>
+    <figcaption>$68</figcaption>
+    <button class="btn2">Buy now</button></figure>`
+
+    gridContianer.appendChild(cars)
+}
+//for loop to have 6 items 
+
 
 
 
