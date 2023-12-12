@@ -23,6 +23,7 @@ async function showResults()
     //function is not working
 
     displayCars(filteredArray);
+    // not sure if I should be passing filteredArray here
 } 
 
 function filterObjectsWithImages(apiArray) {
