@@ -15,24 +15,36 @@ async function showResults()
 	console.log(respData.result['vehicles']);
 } 
 
+const apiData = ???;
+// I created a for loop to iterrate over the apiData
+//but I don't know how to assign the data that I see in console to the code 
 
 function  extractUsefulContent(data)
 {
-    []
-    //create an array of 20 objects 
-    //loop over your data to extract
-    //use while loop to continue until your done
-    //null check for the image
-    /*
-    {
-        id: ,
-        name: ,
-        image
+    const filteredObjects = [];
+    let i = 0;
+    for (apiData) {
+        if (data.image !== null) {
+            const newObj = {
+                id: data.id,
+                name: data.name,
+                image: data.image
+            };
+            filteredObjects.push(newObj);
+            i++;
+            if (i === 20) {
+                break;
+            }
+        }
     }
-
-    */
-
+    return filteredObjects;
 }
+
+const filteredArray = extractUsefulContent(apiData);
+console.log(filteredArray);
+
+
+
 const gridContianer = document.querySelector('.grid-container');
 
 
