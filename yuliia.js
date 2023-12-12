@@ -7,7 +7,7 @@ const options = {
 	}
 };
 
-
+const carsElement = document.querySelector('.cars');
 
 showResults();
 async function showResults()
@@ -17,25 +17,25 @@ async function showResults()
     const respCars = respData.result['vehicles'];
     //console.log(respCars);
     const filteredArray = filterObjectsWithImages(respCars.slice(0, 45));
-
     console.log(filteredArray);
-  
+
+    carsElement.innerHTML = "";
+    //function is not working
+
+    displayCars(filteredArray);
 } 
 
 function filterObjectsWithImages(apiArray) {
     const filteredArray = [];
   
     for (const apiObject of apiArray) {
-      // Check if the image property is not null
       if (apiObject.image !== null) {
-        // Create a new object with the required properties
         const newCar = {
           id: apiObject.id,
           name: apiObject.name,
           image: apiObject.image
         };
   
-        // Add the new object to the filtered array
         filteredArray.push(newCar);
       }
     }
@@ -43,58 +43,25 @@ function filterObjectsWithImages(apiArray) {
     return filteredArray;
   }
 
+  function displayCars(carData)
+  {
+    const car = document.createElement("div");
+    car.classList.add("cars");
+    carsElement.innerHTML = `
+                        <figure> <img src="${carData.image}">
+                        <figcaption>Hot Wheels test text ${carData.name}</figcaption>
+                        <figcaption>$68</figcaption>
+                        <button class="btn2">Buy now</button></figure>`
 
-// I created a for loop to iterrate over the apiData
-//but I don't know how to assign the data that I see in console to the code 
+    carsElement.appendChild(car);
+  }
+
 
 
 /*
-function  extractUsefulContent(data)
-{
-    const filteredObjects = [];
-    let i = 0;
-    for (respCars) {
-        if (data.image !== null) {
-            const newObj = {
-                id: data.id,
-                name: data.name,
-                image: data.image
-            };
-            filteredObjects.push(newObj);
-            i++;
-            if (i === 20) {
-                break;
-            }
-        }
-    }
-    return filteredObjects;
-}
 
-const filteredArray = extractUsefulContent(respCars);
-console.log(filteredArray);
-
-
-
-const gridContianer = document.querySelector('.grid-container');
-
-
-displayCars();
-function displayCars()
-{
-    const cars = document.createElement("div");
-    cars.classList.add("cars");
-
-    cars.innerHTML = `
-    <figure> <img src="${image}">
-    <figcaption>${name}</figcaption>
-    <figcaption>$72</figcaption>
-    <button class="btn2">Buy now</button></figure>`
-
-    gridContianer.appendChild(cars)
-}
-
-//same question here - to access data with ${} I need to name data 
-//same way as we had mealData in the exercise but I didn't find where we deckared mealData
-//for loop to have 6 items 
-
+carData == mealData in the videos 
+I couldn't get where this var coming from. Looks like it's in the API
+In this case I don;t have an equivalent in my api and 
+stuck because don't know how to tarhet image and name there
 */
