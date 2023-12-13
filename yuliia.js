@@ -17,14 +17,19 @@ async function showResults()
     const respCars = respData.result['vehicles'];
     //console.log(respCars);
     const filteredArray = filterObjectsWithImages(respCars.slice(0, 45));
-    console.log(filteredArray);
+    console.log(filteredArray); // not sure about this line
 
     carsElement.innerHTML = "";
-    //function is not working
+    //function is working only for the first element
 
-    displayCars(filteredArray);
-    // not sure if I should be passing filteredArray here
-} 
+    for (let i = 0; i < 6; i++) {
+        filteredArray.forEach(carData => {
+          displayCars(carData);
+        });
+      }
+// loop filtered array 6 time to display instead of HTML
+  }
+
 
 function filterObjectsWithImages(apiArray) {
     const filteredArray = [];
@@ -44,6 +49,7 @@ function filterObjectsWithImages(apiArray) {
     return filteredArray;
   }
 
+
   function displayCars(carData)
   {
     const car = document.createElement("div");
@@ -51,18 +57,26 @@ function filterObjectsWithImages(apiArray) {
     carsElement.innerHTML = `
                         <figure> <img src="${carData.image}">
                         <figcaption>Hot Wheels test text ${carData.name}</figcaption>
-                        <figcaption>$68</figcaption>
+                        <figcaption>$${randomNumber}</figcaption>
                         <button class="btn2">Buy now</button></figure>`
 
     carsElement.appendChild(car);
-  }
+    displayRandomNumber();
 
+    const displayRandomNumber = () => {
+        const randomNumber = Math.floor(Math.random() * (200 - 80 + 1)) + 80;
+        console.log(randomNumber);
+      };
+
+      // rand numb function is added to display price $80-200 
+      
+  }
 
 
 /*
 
 carData == mealData in the videos 
 I couldn't get where this var coming from. Looks like it's in the API
-In this case I don;t have an equivalent in my api and 
-stuck because don't know how to tarhet image and name there
+In this case I don't have an equivalent in my api and 
+stuck because don't know how to target image and name there
 */

@@ -4,6 +4,7 @@ body{
     font-weight: 300;
     margin: 0px;
     background-color: #e0f5fe;
+    
 }
 
 
@@ -151,6 +152,13 @@ footer {
     font-weight: 500;
     color: #e0f5fe;
 }
+
+table {
+    padding-bottom: 40px;
+}
+
+
+
 
 
 
