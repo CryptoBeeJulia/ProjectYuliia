@@ -17,7 +17,7 @@ async function showResults()
     const respCars = respData.result['vehicles'];
     //console.log(respCars);
     const filteredArray = filterObjectsWithImages(respCars.slice(0, 45));
-    console.log(filteredArray); // not sure about this line
+    console.log(filteredArray); 
 
     carsElement.innerHTML = "";
     //function is working only for the first element
@@ -27,8 +27,17 @@ async function showResults()
           displayCars(carData);
         });
       }
+    }
 // loop filtered array 6 time to display instead of HTML
-  }
+
+
+  /*
+
+carData == mealData in the videos 
+I couldn't get where this var coming from. Looks like it's in the API
+In this case I don't have an equivalent in my api and 
+stuck because don't know how to target image and name there
+*/
 
 
 function filterObjectsWithImages(apiArray) {
@@ -71,12 +80,3 @@ function filterObjectsWithImages(apiArray) {
       // rand numb function is added to display price $80-200 
       
   }
-
-
-/*
-
-carData == mealData in the videos 
-I couldn't get where this var coming from. Looks like it's in the API
-In this case I don't have an equivalent in my api and 
-stuck because don't know how to target image and name there
-*/
