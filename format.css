@@ -19,9 +19,16 @@ body{
     background-color: white;
 }
 
+p{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 h1,h2{
     color: #3399CC;
     padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20 px;
 }
 
 h1{
@@ -155,8 +162,32 @@ footer {
 
 table {
     padding-bottom: 40px;
+    width: 70%;
 }
 
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+thead {
+    background-color: #f2f2f2; 
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+ 
 
 
 
