@@ -22,6 +22,12 @@ body{
 p{
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+a{
+    color:rgb(236, 109, 11);
+    font-weight: 500;
 }
 
 h1,h2{
@@ -55,7 +61,10 @@ nav ul li{
 nav ul li a{
     text-decoration-line: none;
     background-color: #4d4d4d;
-    padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     display:block;
     color: white;
 }
@@ -94,7 +103,7 @@ img {
 }
 
 
- .flex-container {
+.flex-container {
     display: flex;
     flex-direction: row;
   }
@@ -187,7 +196,32 @@ thead {
   td {
     border-bottom: 1px solid #ddd;
   }
+
+  form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    
+  }
  
+  input[type="submit"]:hover {
+    background-color: rgb(236, 109, 11);
+  }
+
+  .gallery-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .gallery-item {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .gallery-item img {
+    max-width: 100%;
+    height: auto;
+  }
 
 
 
