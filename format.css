@@ -109,25 +109,50 @@ img {
   }
 
 
-#col1{
-    padding: 0px 30px 30px 30px;
-    min-width: 400px;
-}
+  #col1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #col1 figure {
+    text-align: center;
+  }
+  
+  #col1 img {
+    max-width: 80%; 
+    height: auto;
+  }
 
 
-#col2{
-    padding: 0px 30px 0px 0px;
-    font-weight:500;   
-}
+#col2 {
+    flex: 1;
+  }
+  
+  #col2 h2,
+  #col2 p {
+    text-align: left;
+  }
+  
+  .btn1 {
+    display: block;
+    margin: 20px auto; 
+    padding: 15px 30px; 
+    font-size: 16px; 
+    color: #fff; 
+    background-color: #4CAF50; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+  }
+  
+  .btn1:hover {
+    background-color: #4ca2df; 
+  }
 
-.btn1 {
-    justify-self: center;
-}
-.btn2 {
-    justify-self: center;
-}
 
-/* This property doesn't work for btns */
 
 figure {
     padding: 10 px;
