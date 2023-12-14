@@ -7,6 +7,8 @@ const options = {
 	}
 };
 
+/*
+
 const carsElement = document.querySelector('.cars');
 
 showResults();
@@ -39,6 +41,8 @@ In this case I don't have an equivalent in my api and
 stuck because don't know how to target image and name there
 */
 
+
+/*
 
 function filterObjectsWithImages(apiArray) {
     const filteredArray = [];
@@ -80,3 +84,5 @@ function filterObjectsWithImages(apiArray) {
       // rand numb function is added to display price $80-200 
       
   }
+
+  */
