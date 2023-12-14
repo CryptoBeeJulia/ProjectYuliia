@@ -7,7 +7,7 @@ const options = {
 	}
 };
 
-/*
+
 
 const carsElement = document.querySelector('.cars');
 
@@ -42,7 +42,7 @@ stuck because don't know how to target image and name there
 */
 
 
-/*
+
 
 function filterObjectsWithImages(apiArray) {
     const filteredArray = [];
@@ -85,4 +85,4 @@ function filterObjectsWithImages(apiArray) {
       
   }
 
-  */
+  
