@@ -161,6 +161,10 @@ img {
     cursor: pointer; 
   }
 
+  .checkout-button:hover {
+    background-color: #4ca2df; 
+    cursor: pointer;
+  }
 
 
 figure {
@@ -267,6 +271,62 @@ thead {
     max-width: 100%;
     height: auto;
   }
+
+  .cart-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.item-image {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.item-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.item-description {
+    flex: 2;
+}
+
+.item-price {
+    flex: 1;
+}
+
+.remove-button {
+    flex: 1;
+    text-align: center;
+}
+
+.checkout-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.checkout-button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
 
 
 
