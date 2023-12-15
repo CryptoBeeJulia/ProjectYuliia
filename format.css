@@ -328,6 +328,16 @@ thead {
   font-size: 16px;
 }
 
+section.error {
+  text-align: center;
+  padding: 180px;
+}
+
+.checkout-section .checkout-button a {
+  color: white;
+  text-decoration: none;
+}
+
 
 
 

@@ -7,7 +7,8 @@ const options = {
 	}
 };
 
-
+// below the functionality to replace hyml grid with api data - failed
+/*
 
 const carsElement = document.querySelector('.cars');
 
@@ -71,7 +72,9 @@ async function showResults()
    
     }
 
+  */
 
+// below the functionality to add filtered array from api to local storage - failed
 /*
   function addCarsToLocalStorage(carId) 
   {
@@ -100,6 +103,5 @@ function removeCarsFromLocalStorage(carId)
 */
 
 
-
-
+// function add car to cart
 
