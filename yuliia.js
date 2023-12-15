@@ -11,6 +11,7 @@ const options = {
 
 const carsElement = document.querySelector('.cars');
 
+
 showResults();
 async function showResults()
 {
@@ -27,62 +28,78 @@ async function showResults()
     for (let i = 0; i < 6; i++) {
         filteredArray.forEach(carData => {
           displayCars(carData);
-        });
+        })
       }
+    // loops the array to dispolay 6 cars
     }
-// loop filtered array 6 time to display instead of HTML
+
+    function filterObjectsWithImages(apiArray) {
+      const filteredArray = [];
+    
+      for (const apiObject of apiArray) {
+        if (apiObject.image !== null) {
+          const newCar = {
+            id: apiObject.id,
+            name: apiObject.name,
+            image: apiObject.image
+          };
+    
+          filteredArray.push(newCar);
+        }
+      }
+    
+      return filteredArray;
+    }
+
+    function displayCars(carData) //don't know which var to pass to this function
+    {
+      const car = document.createElement("div");
+      car.classList.add("cars");
+      carsElement.innerHTML = `
+                          <figure> <img src="${filteredArray.image}">
+                          <figcaption>Hot Wheels test text ${filteredArray.name}</figcaption>
+                          <figcaption>$${randomNumber}</figcaption>
+                          <button class="btn2">Buy now</button></figure>`
+  
+      carsElement.appendChild(car);
+      displayRandomNumber();
+
+      const displayRandomNumber = () => {
+        const randomNumber = Math.floor(Math.random() * (200 - 80 + 1)) + 80;
+        console.log(randomNumber);
+      };
+   
+    }
 
 
-  /*
+/*
+  function addCarsToLocalStorage(carId) 
+  {
 
-carData == mealData in the videos 
-I couldn't get where this var coming from. Looks like it's in the API
-In this case I don't have an equivalent in my api and 
-stuck because don't know how to target image and name there
+    const carIds = getCarsFromLocalStorage();
+    localStorage.setItem('carIds', JSON.stringify(filteredArray, carId));
+  
+  }
+
+  function getCarsFromLocalStorage()
+  {
+    const carIds = JSON.parse(localStorage.getItem('carIds'));
+
+    return carIds === null? [] : carIds;
+  }
+
+
+function removeCarsFromLocalStorage(carId)
+{
+    const carIds = getCarsFromLocalStorage();
+    localStorage.setItem('carIds', JSON.stringify(
+        carIds.filter(id => id!= carId)
+    ));
+}
+// console.log(carId); carId is not defined
 */
 
 
 
 
-function filterObjectsWithImages(apiArray) {
-    const filteredArray = [];
-  
-    for (const apiObject of apiArray) {
-      if (apiObject.image !== null) {
-        const newCar = {
-          id: apiObject.id,
-          name: apiObject.name,
-          image: apiObject.image
-        };
-  
-        filteredArray.push(newCar);
-      }
-    }
-  
-    return filteredArray;
-  }
 
-
-  function displayCars(carData)
-  {
-    const car = document.createElement("div");
-    car.classList.add("cars");
-    carsElement.innerHTML = `
-                        <figure> <img src="${carData.image}">
-                        <figcaption>Hot Wheels test text ${carData.name}</figcaption>
-                        <figcaption>$${randomNumber}</figcaption>
-                        <button class="btn2">Buy now</button></figure>`
-
-    carsElement.appendChild(car);
-    displayRandomNumber();
-
-    const displayRandomNumber = () => {
-        const randomNumber = Math.floor(Math.random() * (200 - 80 + 1)) + 80;
-        console.log(randomNumber);
-      };
-
-      // rand numb function is added to display price $80-200 
-      
-  }
-
-  
