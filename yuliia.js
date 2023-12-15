@@ -105,3 +105,45 @@ function removeCarsFromLocalStorage(carId)
 
 // function add car to cart
 
+function addToCart(carImage, carDescription, carPrice) {
+// a new cart item element
+  const cartItem = document.createElement('div');
+  cartItem.classList.add('cart-item');
+  cartItem.innerHTML = `
+  <div class="item-image">
+      <img src="${carImage}" alt="Product Image">
+  </div>
+  <div class="item-description">
+      <p>${carDescription}</p>
+  </div>
+  <div class="item-price">
+      <p>${carPrice}</p>
+  </div>
+  <div class="remove-button">
+      <button onclick="removeFromCart(this)">Remove</button>
+  </div>
+`;
+
+const cartContainer = document.querySelector('.cart-container');
+        cartContainer.appendChild(cartItem);
+    }
+
+    const addToCartButtons = document.querySelectorAll('.btn2');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() 
+        {
+            const productCard = this.closest('.cars');
+            const carImage = productCard.querySelector('img').src;
+            const carDescription = productCard.querySelector('figcaption:nth-child(2)').textContent;
+            const carPrice = productCard.querySelector('figcaption:nth-child(3)').textContent;
+            
+            addToCart(carImage, carDescription, carPrice);
+        });
+    });
+
+    function removeFromCart(button) {
+      const cartItem = button.closest('.cart-item');
+      cartItem.remove();
+  }
+
+  
