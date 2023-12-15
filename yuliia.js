@@ -105,83 +105,88 @@ function removeCarsFromLocalStorage(carId)
 
 
   
-  function addToCart(carImage, carDescription, carPrice) {
+function addToCart(carImage, carDescription, carPrice) {
   
-    const cartItem = document.createElement('div');
-    cartItem.classList.add('cart-item');
-    cartItem.innerHTML = `
-      <div class="item-image">
-        <img src="${carImage}" alt="Product Image">
-      </div>
-      <div class="item-description">
-        <p>${carDescription}</p>
-      </div>
-      <div class="item-price">
-        <p>${carPrice}</p>
-      </div>
-      <div class="remove-button">
-        <button onclick="removeFromCart(this)">Remove</button>
-      </div>
-    `;
-  
-    const cartContainer = document.querySelector('.cart-container');
-    cartContainer.appendChild(cartItem);
-  
-    saveCartToLocalStorage();
+  const cartItem = document.createElement('div');
+  cartItem.classList.add('cart-item');
+  cartItem.innerHTML = `
+    <div class="item-image">
+      <img src="${carImage}" alt="Product Image">
+    </div>
+    <div class="item-description">
+      <p>${carDescription}</p>
+    </div>
+    <div class="item-price">
+      <p>${carPrice}</p>
+    </div>
+    <div class="remove-button">
+      <button onclick="removeFromCart(this)">Remove</button>
+    </div>
+  `;
 
-  }
-  
-  const addToCartButtons = document.querySelectorAll('.btn2');
-  addToCartButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const productCard = this.closest('.cars');
-      // this.closest('.cars') looks for the closest ancestor with the class
-      const carImage = productCard.querySelector('img').src;
-      const carDescription = productCard.querySelector('figcaption:nth-child(2)').textContent;
-      const carPrice = productCard.querySelector('figcaption:nth-child(3)').textContent;
-  
-      addToCart(carImage, carDescription, carPrice);
-    });
+  const cartContainer = document.querySelector('.cart-container');
+  cartContainer.appendChild(cartItem);
+
+  saveCartToLocalStorage();
+
+}
+
+const addToCartButtons = document.querySelectorAll('.btn2');
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const productCard = this.closest('.cars');
+    // this.closest('.cars') looks for the closest ancestor with the class
+    const carImage = productCard.querySelector('img').src;
+    const carDescription = productCard.querySelector('figcaption:nth-child(2)').textContent;
+    const carPrice = productCard.querySelector('figcaption:nth-child(3)').textContent;
+
+    addToCart(carImage, carDescription, carPrice);
   });
-  
-  function removeFromCart(button) {
-    const cartItem = button.closest('.cart-item');
-    cartItem.remove();
-  
+});
 
-    saveCartToLocalStorage();
+function removeFromCart(button) {
+  const cartItem = button.closest('.cart-item');
+  cartItem.remove();
 
-  }
 
-  function saveCartToLocalStorage() {
-    const cartContainer = document.querySelector('.cart-container');
-    const cartItems = cartContainer.querySelectorAll('.cart-item');
-  
-    const cartData = [];
-  
-    cartItems.forEach(item => {
-      const imageSrc = item.querySelector('.item-image img').src;
-      const description = item.querySelector('.item-description p').textContent;
-      const price = item.querySelector('.item-price p').textContent;
-  
-      cartData.push({ imageSrc, description, price });
-    });
-  
-    localStorage.setItem('cart', JSON.stringify(cartData));
-  }
-  
+  saveCartToLocalStorage();
 
-  function loadCartFromLocalStorage() {
-    const cartData = JSON.parse(localStorage.getItem('cart')) || [];
-  
-    const cartContainer = document.querySelector('.cart-container');
-  
-    cartContainer.innerHTML = '';
-    cartData.forEach(item => {
-      addToCart(item.imageSrc, item.description, item.price);
-    });
-  }
-  
-  window.addEventListener('load', loadCartFromLocalStorage);
+}
+
+function saveCartToLocalStorage() {
+  const cartContainer = document.querySelector('.cart-container');
+  const cartItems = cartContainer.querySelectorAll('.cart-item');
+
+  const cartData = [];
+
+  cartItems.forEach(item => {
+    const imageSrc = item.querySelector('.item-image img').src;
+    const description = item.querySelector('.item-description p').textContent;
+    const price = item.querySelector('.item-price p').textContent;
+
+    cartData.push({ imageSrc, description, price });
+  });
+
+  localStorage.setItem('cart', JSON.stringify(cartData));
+}
+
+
+function loadCartFromLocalStorage() {
+  const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+
+  const cartContainer = document.querySelector('.cart-container');
+
+  cartContainer.innerHTML = '';
+  cartData.forEach(item => {
+    addToCart(item.imageSrc, item.description, item.price);
+  });
+}
+
+window.addEventListener('load', loadCartFromLocalStorage); 
+
+// tried to add cart is empty message using if-else statement to change value of cartContainer.innerHTML = '';
+// but failed
+
+
 
   
