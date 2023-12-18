@@ -1,4 +1,5 @@
 const url = 'https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1/mmv?vehicle_type=car';
+const imageURL ='https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1'
 const options = {
 	method: 'GET',
 	headers: {
@@ -7,10 +8,11 @@ const options = {
 	}
 };
 
-// below the functionality to replace hyml grid with api data - failed
-/*
+// below the functionality to replace html grid with api data - failed
 
-const carsElement = document.querySelector('.cars');
+
+const gridElement = document.querySelector(".grid-container");
+let filteredArray = [];
 
 
 showResults();
@@ -23,13 +25,14 @@ async function showResults()
     const filteredArray = filterObjectsWithImages(respCars.slice(0, 45));
     console.log(filteredArray); 
 
-    carsElement.innerHTML = "";
+    gridElement.innerHTML = "";
     //function is working only for the first element
 
     for (let i = 0; i < 6; i++) {
-        filteredArray.forEach(carData => {
-          displayCars(carData);
-        })
+        
+      console.log(filteredArray[i]);    
+      displayCars(filteredArray[i]);
+      
       }
     // loops the array to dispolay 6 cars
     }
@@ -54,28 +57,35 @@ async function showResults()
 
     function displayCars(carData) //don't know which var to pass to this function
     {
+      let randomNumber = getRandomNumber();
       const car = document.createElement("div");
       car.classList.add("cars");
-      carsElement.innerHTML = `
-                          <figure> <img src="${filteredArray.image}">
-                          <figcaption>Hot Wheels test text ${filteredArray.name}</figcaption>
+      car.innerHTML = `
+                          <figure> <img src="${imageURL +carData.image}">
+                          <figcaption>Hot Wheels test text ${carData.name}</figcaption>
                           <figcaption>$${randomNumber}</figcaption>
                           <button class="btn2">Buy now</button></figure>`
   
-      carsElement.appendChild(car);
-      displayRandomNumber();
+      gridElement.appendChild(car); // needs fix
+    
 
-      const displayRandomNumber = () => {
-        const randomNumber = Math.floor(Math.random() * (200 - 80 + 1)) + 80;
-        console.log(randomNumber);
-      };
+     
    
     }
 
-  */
+   
+
+   function getRandomNumber() 
+    {
+      const randomNumber = Math.floor(Math.random() * (200 - 80 + 1)) + 80;
+      console.log(randomNumber);
+      return randomNumber;
+    };
+
+  
 
 // below the functionality to add filtered array from api to local storage - failed
-/*
+
   function addCarsToLocalStorage(carId) 
   {
 
@@ -100,7 +110,7 @@ function removeCarsFromLocalStorage(carId)
     ));
 }
 // console.log(carId); carId is not defined
-*/
+
 
 
 
