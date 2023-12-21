@@ -1,3 +1,5 @@
+
+
 const url = 'https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1/mmv?vehicle_type=car';
 const imageURL ='https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1'
 const options = {
@@ -8,7 +10,23 @@ const options = {
 	}
 };
 
-// below the functionality to replace html grid with api data - failed
+// https://rapidapi.com/MBDevelopers/api/mercedes-benz-vehicle-images/
+/*
+const newUrl = 'https://mercedes-benz-vehicle-images.p.rapidapi.com/images/%7BimageId%7D?apikey=%3CREQUIRED%3E';
+const newOptions = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '924b0950b2msha34f3cf2693d005p1c7503jsn8f0a3933aa64',
+		'X-RapidAPI-Host': 'mercedes-benz-vehicle-images.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(newUrl, newOptions);
+	const result = await response.text();
+	console.log(result);
+} 
+*/
 
 
 const gridElement = document.querySelector(".grid-container");
