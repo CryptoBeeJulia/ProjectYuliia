@@ -71,7 +71,7 @@ fetchData()
 const gridElement = document.querySelector(".grid-container");
 let filteredArray = [];
 
-
+/*
 showResults();
 async function showResults()
 {
@@ -110,27 +110,23 @@ async function showResults()
     
       return filteredArray;
     }
-
+*/
 
     let firstSixImageURLs;
 
 async function fetchData() {
-  try {
+
     const response = await fetch("https://pixabay.com/api/?key=41394548-bbba414078279e017706eb542&q=car&image_type=photo");
     const data = await response.json();
 
     if (data.hits && data.hits.length > 0) {
-      firstSixImageURLs = data.hits.slice(0, 6).map(image => image.largeImageURL);
+      firstSixImageURLs = data.hits.slice(6, 12).map(image => image.largeImageURL);
       return firstSixImageURLs;
     } else {
       console.log("Not found");
       return [];
     }
-
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
-  }
+  
 }
 
 fetchData()
@@ -140,24 +136,24 @@ fetchData()
   });
 
 function displayCars() {
-  let randomNumber = getRandomNumber();
-  const car = document.createElement("div");
-  car.classList.add("cars");
+
+  gridElement.innerHTML = "";
+
+  for (let i = 0; i < firstSixImageURLs.length; i++) {
+    let randomNumber = getRandomNumber();
+    const car = document.createElement("div");
+    car.classList.add("cars");
 
   car.innerHTML = `
     <figure>
-      <img src="${firstSixImageURLs[0]}">
-      <figcaption>Hot Wheels test text Example Car</figcaption>
+      <img src="${firstSixImageURLs[i]}">
       <figcaption>$${randomNumber}</figcaption>
       <button class="btn2">Buy now</button>
     </figure>`;
 
   gridElement.appendChild(car);
 }
-  
-
-   
-   
+}  
 
    function getRandomNumber() 
     {
