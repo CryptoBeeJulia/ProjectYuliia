@@ -114,49 +114,46 @@ async function showResults()
 
     let firstSixImageURLs;
 
-    async function fetchData() {
-      try {
-        const response = await fetch("https://pixabay.com/api/?key=41394548-bbba414078279e017706eb542&q=car&image_type=photo");
-        const data = await response.json();
-    
-        if (data.hits && data.hits.length > 0) {
-          firstSixImageURLs = data.hits.slice(0, 6).map(image => image.largeImageURL);
-          return firstSixImageURLs;
-        } else {
-          console.log("Not found");
-          return [];
-        }
-    
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
-      }
+async function fetchData() {
+  try {
+    const response = await fetch("https://pixabay.com/api/?key=41394548-bbba414078279e017706eb542&q=car&image_type=photo");
+    const data = await response.json();
+
+    if (data.hits && data.hits.length > 0) {
+      firstSixImageURLs = data.hits.slice(0, 6).map(image => image.largeImageURL);
+      return firstSixImageURLs;
+    } else {
+      console.log("Not found");
+      return [];
     }
-    
-    fetchData()
-      .then(() => {
-        console.log(firstSixImageURLs);
-        displayCars();
-      });
 
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
 
-   function displayCars(carData)
-    {
-      let randomNumber = getRandomNumber();
-      const car = document.createElement("div");
-      car.classList.add("cars");
+fetchData()
+  .then(() => {
+    console.log(firstSixImageURLs);
+    displayCars();
+  });
 
+function displayCars() {
+  let randomNumber = getRandomNumber();
+  const car = document.createElement("div");
+  car.classList.add("cars");
 
+  car.innerHTML = `
+    <figure>
+      <img src="${firstSixImageURLs[0]}">
+      <figcaption>Hot Wheels test text Example Car</figcaption>
+      <figcaption>$${randomNumber}</figcaption>
+      <button class="btn2">Buy now</button>
+    </figure>`;
 
-      car.innerHTML = `
-                          <figure> <img src="${firstSixImageURLs[0-6]}">
-                          <figcaption>Hot Wheels test text ${carData.name}</figcaption>
-                          <figcaption>$${randomNumber}</figcaption>
-                          <button class="btn2">Buy now</button></figure>`
-  
-      gridElement.appendChild(car); 
-  
-    }
+  gridElement.appendChild(car);
+}
   
 
    
