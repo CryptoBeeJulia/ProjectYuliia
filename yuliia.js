@@ -1,7 +1,7 @@
 
 
 const url = 'https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1/mmv?vehicle_type=car';
-const imageURL ='https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1'
+//const imageURL ='https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1'
 const options = {
 	method: 'GET',
 	headers: {
@@ -10,23 +10,62 @@ const options = {
 	}
 };
 
-// https://rapidapi.com/MBDevelopers/api/mercedes-benz-vehicle-images/
-/*
-const newUrl = 'https://mercedes-benz-vehicle-images.p.rapidapi.com/images/%7BimageId%7D?apikey=%3CREQUIRED%3E';
-const newOptions = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '924b0950b2msha34f3cf2693d005p1c7503jsn8f0a3933aa64',
-		'X-RapidAPI-Host': 'mercedes-benz-vehicle-images.p.rapidapi.com'
-	}
-};
+// https://pixabay.com/api/docs/
+// 41394548-bbba414078279e017706eb542 - key
+// https://pixabay.com/api/ - GET
 
-try {
-	const response = await fetch(newUrl, newOptions);
-	const result = await response.text();
-	console.log(result);
-} 
+
+
+/* let globalImageData = [];
+
+fetchData();
+async function fetchData() {
+    const response = await fetch("https://pixabay.com/api/?key=41394548-bbba414078279e017706eb542&q=car&image_type=photo");
+    const json = await response.json();
+    const globalImageData = json;
+    console.log(globalImageData);
+  
+}
+
+// console.log(globalImageData); - empty array
+
 */
+
+//attempt 2
+
+
+async function fetchData() {
+  
+    const response = await fetch("https://pixabay.com/api/?key=41394548-bbba414078279e017706eb542&q=car&image_type=photo");
+    const data = await response.json();
+
+    if (data.hits && data.hits.length > 0) {
+      const firstSixImageURLs = data.hits.slice(0, 6).map(image => image.largeImageURL);
+ 
+      return firstSixImageURLs;
+    } else {
+      console.log("Not found");
+      return [];
+    }
+
+}
+
+fetchData()
+  .then((firstSixImageURLs) => {
+    console.log(firstSixImageURLs);
+  })
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const gridElement = document.querySelector(".grid-container");
@@ -44,7 +83,6 @@ async function showResults()
     console.log(filteredArray); 
 
     gridElement.innerHTML = "";
-    //function is working only for the first element
 
     for (let i = 0; i < 6; i++) {
         
@@ -73,24 +111,24 @@ async function showResults()
       return filteredArray;
     }
 
-    function displayCars(carData) //don't know which var to pass to this function
+    function displayCars(carData)
     {
       let randomNumber = getRandomNumber();
       const car = document.createElement("div");
       car.classList.add("cars");
+
+
+
       car.innerHTML = `
-                          <figure> <img src="${imageURL +carData.image}">
+                          <figure> <img src="${carData.image}">
                           <figcaption>Hot Wheels test text ${carData.name}</figcaption>
                           <figcaption>$${randomNumber}</figcaption>
                           <button class="btn2">Buy now</button></figure>`
   
-      gridElement.appendChild(car); // needs fix
-    
-
-     
-   
+      gridElement.appendChild(car); 
+  
     }
-
+   
    
 
    function getRandomNumber() 
