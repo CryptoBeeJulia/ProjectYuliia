@@ -1,14 +1,7 @@
 
 
-const url = 'https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1/mmv?vehicle_type=car';
-//const imageURL ='https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1'
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '924b0950b2msha34f3cf2693d005p1c7503jsn8f0a3933aa64',
-		'X-RapidAPI-Host': 'all-cars-names-image-and-variants-info.p.rapidapi.com'
-	}
-};
+
+
 
 // https://pixabay.com/api/docs/
 // 41394548-bbba414078279e017706eb542 - key
@@ -16,101 +9,9 @@ const options = {
 
 
 
-/* let globalImageData = [];
-
-fetchData();
-async function fetchData() {
-    const response = await fetch("https://pixabay.com/api/?key=41394548-bbba414078279e017706eb542&q=car&image_type=photo");
-    const json = await response.json();
-    const globalImageData = json;
-    console.log(globalImageData);
-  
-}
-
-// console.log(globalImageData); - empty array
-
-*/
-
-//attempt 2
-
-/* 
-async function fetchData() {
-  
-    const response = await fetch("https://pixabay.com/api/?key=41394548-bbba414078279e017706eb542&q=car&image_type=photo");
-    const data = await response.json();
-
-    if (data.hits && data.hits.length > 0) {
-      firstSixImageURLs = data.hits.slice(0, 6).map(image => image.largeImageURL);
-      return firstSixImageURLs; 
-    } else {
-      console.log("Not found");
-      return [];
-    }
-
-}
-
-fetchData()
-  .then((firstSixImageURLs) => {
-    console.log(firstSixImageURLs);
-  })
-
-  */
-
-
-
-
-
-
-
-
-
-
-
-
-
 const gridElement = document.querySelector(".grid-container");
 let filteredArray = [];
 
-/*
-showResults();
-async function showResults()
-{
-	const response = await fetch(url, options);
-	const respData = await response.json();
-    const respCars = respData.result['vehicles'];
-    //console.log(respCars);
-    const filteredArray = filterObjectsWithImages(respCars.slice(0, 45));
-    console.log(filteredArray); 
-
-    gridElement.innerHTML = "";
-
-    for (let i = 0; i < 6; i++) {
-        
-      console.log(filteredArray[i]);    
-      displayCars(filteredArray[i]);
-      
-      }
-    // loops the array to dispolay 6 cars
-    }
-
-    function filterObjectsWithImages(apiArray) {
-      const filteredArray = [];
-    
-      for (const apiObject of apiArray) {
-        if (apiObject.image !== null) {
-          const newCar = {
-            id: apiObject.id,
-            name: apiObject.name,
-            image: apiObject.image
-          };
-    
-          filteredArray.push(newCar);
-        }
-      }
-    
-      return filteredArray;
-    }
-*/
 
     let firstSixImageURLs;
 
@@ -162,7 +63,58 @@ function displayCars() {
       return randomNumber;
     };
 
-  
+  /*
+
+const url = 'https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1/mmv?vehicle_type=car';
+//const imageURL ='https://all-cars-names-image-and-variants-info.p.rapidapi.com/motororchestrator/api/v1'
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '924b0950b2msha34f3cf2693d005p1c7503jsn8f0a3933aa64',
+		'X-RapidAPI-Host': 'all-cars-names-image-and-variants-info.p.rapidapi.com'
+	}
+};
+
+
+showResults();
+async function showResults()
+{
+	const response = await fetch(url, options);
+	const respData = await response.json();
+    const respCars = respData.result['vehicles'];
+    //console.log(respCars);
+    const filteredArray = filterObjectsWithImages(respCars.slice(0, 45));
+    console.log(filteredArray); 
+
+    gridElement.innerHTML = "";
+
+    for (let i = 0; i < 6; i++) {
+        
+      console.log(filteredArray[i]);    
+      displayCars(filteredArray[i]);
+      
+      }
+    // loops the array to dispolay 6 cars
+    }
+
+    function filterObjectsWithImages(apiArray) {
+      const filteredArray = [];
+    
+      for (const apiObject of apiArray) {
+        if (apiObject.image !== null) {
+          const newCar = {
+            id: apiObject.id,
+            name: apiObject.name,
+            image: apiObject.image
+          };
+    
+          filteredArray.push(newCar);
+        }
+      }
+    
+      return filteredArray;
+    }
+
 
 // below the functionality to add filtered array from api to local storage - failed
 
@@ -191,9 +143,12 @@ function removeCarsFromLocalStorage(carId)
 }
 // console.log(carId); carId is not defined
 
+*/
 
+// because the carImage, carDescription and carPrice data were replaced 
+// cart is not working now
 
-
+/*
   
 function addToCart(carImage, carDescription, carPrice) {
   
@@ -278,5 +233,5 @@ window.addEventListener('load', loadCartFromLocalStorage);
 // but failed
 
 
-
+*/
   
